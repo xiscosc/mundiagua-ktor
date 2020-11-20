@@ -62,3 +62,8 @@ tasks.withType<Jar> {
         )
     }
 }
+
+tasks.register("stage") {
+    dependsOn("build", "clean")
+    tasks.findByName("build")!!.mustRunAfter("clean")
+}

@@ -31,7 +31,7 @@ object DatabaseFactory {
         val config = HikariConfig()
         config.driverClassName = "org.postgresql.Driver"
         config.jdbcUrl = ConfigFactory.load().getString("db.url")
-        config.maximumPoolSize = 5
+        config.maximumPoolSize = ConfigFactory.load().getString("db.pool-size").toInt()
         config.username = ConfigFactory.load().getString("db.username")
         config.password = ConfigFactory.load().getString("db.password")
         config.isAutoCommit = false
